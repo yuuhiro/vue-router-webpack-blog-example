@@ -15,7 +15,7 @@ export default {
 	created() {
 		const id = this.$route.params.id;
 		if(id) {
-			this.article = ArticleStore.getWidhId(id)[0];
+			this.article = ArticleStore.getWithId(id);
 		}
 	}
 }

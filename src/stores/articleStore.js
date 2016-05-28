@@ -18,8 +18,8 @@ class ArticleStore {
 		});
 		console.log('this.articles', this.articles);
 	}
-	getWidhId(id) {
-		return this.articles.filter((article) => article.id === id);
+	getWithId(id) {
+		return this.articles.find((article) => article.id === id);
 	}
 	updateStore() {
 		localStorage.setItem('articles', JSON.stringify(this.articles));
@@ -35,7 +35,7 @@ class ArticleStore {
 	}
 	edit(id, title, body) {
 		return new Promise((resoleve) => {
-			let article = this.getWidhId(id)[0];
+			let article = this.getWithId(id);
 			article.title = title;
 			article.body = body;
 			this.updateStore();
@@ -44,7 +44,7 @@ class ArticleStore {
 	}
 	remove(id) {
 		return new Promise((resoleve) => {
-			this.articles.splice(this.articles.indexOf(this.getWidhId(id)[0]), 1);
+			this.articles.splice(this.articles.indexOf(this.getWithId(id)), 1);
 			this.updateStore();
 			resoleve();
 		});
