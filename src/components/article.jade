@@ -1,0 +1,8 @@
+div
+	article.article
+		p.article__title
+			strong {{article.title}}
+		p {{{article.body | escapeHtml | nl2br}}}
+	div.text-right
+		button.btn.mr-10(v-on:click="removeArticle(article.id)") 削除
+		button.btn(v-on:click="editArticle(article.id)") 編集

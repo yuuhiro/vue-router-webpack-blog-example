@@ -1,0 +1,4 @@
+div
+	article.articles(v-for="article in articles", v-on:click="showArticle(article.id)")
+		a(href="#")
+			strong {{article.title}}

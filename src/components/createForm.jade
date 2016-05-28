@@ -1,0 +1,18 @@
+div.create-form
+	div.form-group
+		input.form-input(
+			placeholder="タイトル"
+			type="text"
+			v-model="articleTitle")
+	div.form-group
+		textarea.form-input(
+			placeholder="内容"
+			rows="3"
+			v-model="articleBody")
+div.text-right
+	button.btn.btn-primary(
+		v-show="!editing"
+		v-on:click="create") 投稿
+	button.btn.btn-primary(
+		v-show="editing"
+		v-on:click="edit") 更新
