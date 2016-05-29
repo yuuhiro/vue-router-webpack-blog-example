@@ -1,12 +1,12 @@
 a {
-    text-decoration: none !important;
+	text-decoration: none !important;
 }
 .articles {
-    border-bottom: .1rem solid #efefef;
-    display: block;
-    padding: 15px;
-    cursor: pointer;
+	border-bottom: .1rem solid #efefef;
+	display: block;
+	padding: 15px;
+	cursor: pointer;
 }
 .articles:hover {
-    background: #f9f9f9;
+	background: #f9f9f9;
 }

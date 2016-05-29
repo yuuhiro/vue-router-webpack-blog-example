@@ -4,7 +4,7 @@ import ArticleStore from '../stores/articleStore.js'
 
 
 export default {
-  template: template(),
+	template: template(),
 	components: {
 		'my-create-form': createForm
 	},

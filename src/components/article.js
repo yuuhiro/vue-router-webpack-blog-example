@@ -3,7 +3,7 @@ import './article.css'
 import ArticleStore from '../stores/articleStore.js'
 
 export default {
-  template: template(),
+	template: template(),
 	props: ['article'],
 	methods: {
 		removeArticle(id) {
