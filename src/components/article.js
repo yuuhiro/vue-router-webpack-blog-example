@@ -1,13 +1,21 @@
 import template from './article.jade'
 import './article.css'
-import ArticleStore from '../stores/articleStore.js'
+import { deteleArticle } from '../vuex/actions.js'
 
 export default {
 	template: template(),
 	props: ['article'],
+	vuex: {
+		// getters: {
+		// 	currentArticleID: state => state.currentArticleID
+		// },
+		actions: {
+			deteleArticle
+		}
+	},
 	methods: {
-		removeArticle(id) {
-			ArticleStore.remove(id)
+		removeArticle() {
+			this.deteleArticle(this.article)
 				.then(() => {
 					this.$route.router.go({ path: '/'});
 				});

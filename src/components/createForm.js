@@ -1,13 +1,19 @@
 import template from './createForm.jade'
 import './createForm.css'
-import ArticleStore from '../stores/articleStore.js'
+import { addArticle, editArticle } from '../vuex/actions.js'
 
 export default {
 	template: template(),
 	props: ['article', 'editing'],
+	vuex: {
+		actions: {
+			addArticle,
+			editArticle
+		}
+	},
 	data () {
 		return {
-			isEdit: false,
+			editing: false,
 			articleTitle: '',
 			articleBody: ''
 		}
@@ -20,15 +26,15 @@ export default {
 	},
 	methods: {
 		create() {
-			ArticleStore.add(this.articleTitle, this.articleBody)
+			this.addArticle(this.articleTitle, this.articleBody)
 				.then((id) => {
 					this.$route.router.go({ name: 'article', params: { id: id }});
 				});
 		},
 		edit() {
-			ArticleStore.edit(this.article.id, this.articleTitle, this.articleBody)
-				.then((id) => {
-					this.$route.router.go({ name: 'article', params: { id: id }});
+			this.editArticle(this.article, this.articleTitle, this.articleBody)
+				.then(() => {
+					this.$route.router.go({ name: 'article', params: { id: this.article.id }});
 				});
 		}
 	}

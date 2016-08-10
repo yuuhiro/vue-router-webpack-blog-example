@@ -1,9 +1,20 @@
 import template from './detail.jade'
 import article from '../components/article.js'
-import ArticleStore from '../stores/articleStore.js'
+import store from '../vuex/store.js'
+import { getCurrentArticle } from '../vuex/getters.js'
+import { setCurrentArticleId } from '../vuex/actions.js'
 
 export default {
+	store,
 	template: template(),
+	vuex: {
+		getters: {
+			article: getCurrentArticle
+		},
+		actions: {
+			setCurrentArticleId
+		}
+	},
 	components: {
 		'my-article': article
 	},
@@ -13,6 +24,6 @@ export default {
 	},
 	created() {
 		const id = this.$route.params.id;
-		this.article = ArticleStore.getWithId(id);
+		this.setCurrentArticleId(id);
 	}
 }

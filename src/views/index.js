@@ -1,18 +1,17 @@
 import template from './index.jade'
 import articles from '../components/articles.js'
-import ArticleStore from '../stores/articleStore.js'
+import store from '../vuex/store.js'
 
 
 export default {
+	store,
 	template: template(),
-	components: {
-		'my-articles': articles
-	},
-	data () {
-		return {
+	vuex: {
+		getters: {
+			articles: state => state.articles
 		}
 	},
-	created() {
-		this.articles = ArticleStore.articles;
+	components: {
+		'my-articles': articles
 	}
 }
